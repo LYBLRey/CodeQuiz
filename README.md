@@ -1,14 +1,14 @@
 # CodeQuiz
 
-By Sareybodd Chhorn
+## Sareybodd Chhorn
 
-An "employee portfolio" attempt but more of an expression of the individual, Rey Chhorn, who is a DJ and
-Coding Bootcamp Student part-time.
+A simple coding quiz asking questions related to full-stack developing!
 
 ### Technologies used
 
 - HTML
 - CSS
+- Javascript
 - Visual Studio Code
 
 ## Table of Contents
@@ -22,38 +22,31 @@ Coding Bootcamp Student part-time.
 
 ## Description
 
-This website represents my current skills with HTML (divs, sections, classes, etc) and CSS (flex box).
-This employee portfolio has minimal content as it is my first attempt (will be updated and evolved over time) as
-I am still catching up with 16 other assignments for this bootcamp at the moment (August 25, 2021). The images
-illustrate my main gigs as DJ, to represent who I am and what I love to do, whereas the content in text and in flex boxes below the images are expressing myself as a bootcamp student!
+This quiz will test your beginner-level knowledge of html, css, javascript! Once you start the quiz, you will have 30 seconds to complete it, if you fail to complete it before the timer ends, the quiz will end automatically with the score you had! If you are able to finish the quiz in time, you will also see your final score. Both situations, you will be able to retake the quiz!
 
-My motivation for this project was to have a simple page to express / represent myself both as a DJ and coding bootcamp student.
-
-I built this project so then I have a page that will allow others who come across the page to be able to get a better glimpse of who I am, what I do/what I've done, and what I plan to do going forward.
-
-The problem that this project solves is me now no longer portfolio-less, I at least have a simple and basic page template to start with to then further elevate into something more.
-
-I learned how to hyperlink images, style cool hover effects, mess with flexbox, and make a nav bar at the top of the page!
+During the quiz, live, you will see after you click your answer, at the bottom it will say right or wrong! Users can keep that in mind so then they can try to figure out the right answers when they retake it until they ace it!
 
 ## Repo Link
 
-https://github.com/LYBLRey/employeePortfolio
+https://lyblrey.github.io/CodeQuiz/
 
 ## Usage
 
-This website will allow you to click the top nav to jump to certain topics in this one-page project, allow you to click the images and hyperlinked text to go to actual links that correlate, and will give you information on Rey's
-thoughts and actions.
+With this website, using javascript enabled the ability for a user to select answers then receive data on whether their choice was correct or wrong! This is just the surface level of taking data, saving it, then outputting at the end to show user the outcome of their choices (final score).
 
 ## Known Bugs
 
-No bugs! Just messy code to be honest.
+No bugs at the moment! I was having trouble with bugs within javascript because of renaming certain IDs though! Invalid token errors are too real!
 
 ## Credits
 
-- https://stackoverflow.com/questions/23226888/horizontal-list-items-fit-to-100-with-even-spacing/23226961
-- https://www.gaintap.com/archives/clickable-website-phone-number-and-call-tracking-guide/
-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+- Big help from Chris Abiva one afternoon to help me get a quiz showing up and storing data for produce results!
+- https://www.tutorialrepublic.com/faq/how-to-change-the-cursor-into-a-hand-pointer-on-hover-using-css.php
+- https://www.w3schools.com/cssref/sel_id.asp
+-
 
 ## Features
 
-Top Nav Bar goes to topic headlines within page, images are hyper linked, contact me links are actual links (other than fake phone number)
+- Timer
+- Final score
+- Correct / Wrong shows right after choice is clicked
