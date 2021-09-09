@@ -1,0 +1,105 @@
+* {
+  color: linear-gradient(
+    90deg,
+    rgb(214, 39, 106) 0%,
+    rgb(76, 0, 254) 100%,
+    rgb(234, 0, 255) 100%
+  );
+  background-color: linear-gradient(
+    90deg,
+    rgb(214, 39, 106) 0%,
+    rgb(76, 0, 254) 100%,
+    rgb(234, 0, 255) 100%
+  );
+  font-family: "Times New Roman", serif;
+}
+
+.navigationBar {
+  display: flex;
+  color: white;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+.navigationBar h1 {
+  padding-left: 30px;
+}
+
+.navigationBar nav {
+  margin-left: auto;
+}
+nav ul {
+  list-style: none;
+  padding-right: 30px;
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  font-size: 35px;
+  background-color: chocolate;
+}
+
+section {
+  font-size: 35px;
+}
+
+.queSection {
+  display: none;
+}
+
+#endQuiz {
+  display: none;
+}
+
+#scoreList {
+  display: none;
+}
+
+.center {
+  text-align: center;
+  width: 100%;
+}
+
+#question {
+  padding: 10px;
+  font-size: 35px;
+}
+
+.answer {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.answer:hover {
+  cursor: pointer;
+}
+
+#A:hover {
+  background-color: aqua;
+}
+
+#B:hover {
+  background-color: rgb(242, 134, 252);
+}
+
+#C:hover {
+  background-color: rgb(0, 255, 115);
+}
+
+#D:hover {
+  background-color: rgb(251, 255, 0);
+}
+
+#startBtn {
+  font-size: xx-large;
+  background-color: blueviolet;
+  color: white;
+}
+
+#initialSubmit {
+  font-size: xx-large;
+  background-color: blueviolet;
+  color: white;
+}

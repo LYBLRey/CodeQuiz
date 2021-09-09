@@ -1,34 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <title>Code Quiz</title><meta name="viewport" content="width=device-width"/>
-         
-        <link rel="stylesheet" href="./style.css"></head>
+        <title>Code Quiz</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
     <body>
+        <header>
+            <title>Code Quiz</title>
+        </header>
+  
+        <div class="navigationBar">
+        <h1>Are you ready to take this code quiz? Let's find out!</h1>
+        <nav>
+            <ul>
+                <li id="timerLi">Timer: 30</li>
+            </ul>
+        </nav>
+        </div>        
 
-
-
-
-
-<div class="container">
-    <div id="question-container" class="hide">
-      <div id="question">Question</div>
-      <div id="answer-buttons" class="btn-grid">
-        <button class="btn">Answer 1</button>
-        <button class="btn">Answer 2</button>
-        <button class="btn">Answer 3</button>
-        <button class="btn">Answer 4</button>
-      </div>
+     
+    <div class="center">
+        <section>
+        <button id="startBtn" class="start-button">Start</button>
+           
+        </div>
+        </section>
+        <section class="queSection">
+            <div id="question"></div>
+            <div id="answers">
+                <div class="answer" id="A" onclick="checkAnswer('A')"></div>
+                <div class="answer" id="B" onclick="checkAnswer('B')"></div>
+                <div class="answer" id="C" onclick="checkAnswer('C')"></div>
+                <div class="answer" id="D" onclick="checkAnswer('D')"></div>
+            </div>
+            <div id="questionResult"></div>
+        </section>
     </div>
-    <div class="controls">
-      <button id="start-btn" class="start-btn btn">Start</button>
-      <button id="next-btn" class="next-btn btn hide">Next</button>
-    </div>
-  </div>
+    
 
 
-  <footer>
-</footer>
-<script src="./index.js"></script>
-</body>
+    <section class="center" id="endQuiz">
+        <h2>Completed</h2>
+        <p>Your final score is <span id="finalScore"></span></p>
+        <p>Enter initials: <input type="text" id="initialTxt" /> <button id="initialSubmit">Submit</button></p>
+        
+    </section>
+
+
+    <section class="center" id="scoreList">
+        <div id="retakeBtn" >Retake the Quiz</div>
+        
+    </section>
+    <script type="text/javascript" src="./index.js"></script>
+       <footer>
+       
+    </footer>
+    </body>
+
+
+   
+    
 </html>

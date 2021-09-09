@@ -1,98 +1,164 @@
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
-:root {
-  --hue-neutral: 200;
-  --hue-wrong: 0;
-  --hue-correct: 145;
-}
-
 body {
-  --hue: var(--hue-neutral);
-  padding: 0;
+  font-family: Arial;
   margin: 0;
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  background-color: hsl(var(--hue), 100%, 20%);
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+  background: linear-gradient(
+    90deg,
+    rgb(214, 39, 106) 0%,
+    rgb(76, 0, 254) 100%,
+    rgb(234, 0, 255) 100%
+  );
 }
 
-body.correct {
-  --hue: var(--hue-correct);
+.reset-button {
+  font-size: 16px;
+  height: 30px;
+  line-height: 8px;
+  margin-top: 20px;
 }
 
-body.wrong {
-  --hue: var(--hue-wrong);
+.win-loss-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
 }
 
-.container {
-  width: 800px;
-  max-width: 80%;
+button {
+  background: radial-gradient(
+    circle,
+    rgb(51, 179, 196) rgba(33, 69, 187, 0.954) 100%
+  );
+  border-radius: 8px;
+  color: linear-gradient(
+    90deg,
+    rgb(214, 39, 106) 0%,
+    rgb(76, 0, 254) 100%,
+    rgb(234, 0, 255) 100%
+  );
+  cursor: pointer;
+  font-size: 2em;
+  letter-spacing: 0.21px;
+  line-height: 16px;
+  max-width: 255px;
+  padding: 20px 52px;
+  text-align: center;
+  transition-duration: 0.15s;
+  transition-property: background-color;
+  transition-timing-function: linear;
+  margin-top: 0.6em;
+}
+
+header {
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgb(214, 39, 106) 0%,
+    rgb(76, 0, 254) 100%,
+    rgb(234, 0, 255) 100%
+  );
+  color: #fff;
+  border-bottom: 30px #879274;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+section {
+  flex: 0 auto;
+  padding: 8px;
+  margin-top: 50px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 8px;
+}
+
+.word-guess {
+  width: 55vw;
+  height: 400px;
+}
+
+.results {
+  width: 30vw;
+  height: 400px;
+}
+
+.card {
+  background: radial-gradient(
+    circle,
+    rgb(51, 179, 196) rgba(33, 69, 187, 0.954) 100%
+  );
+  border: 1px solid #eceff1;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+    rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
+  margin: auto;
+  padding: 20px;
+}
+
+.word-blanks {
+  line-height: 360px;
+}
+
+.large-font {
+  font-size: 3.5em;
+  text-align: center;
+}
+
+.timer {
+  height: 240px;
   padding: 10px;
-  box-shadow: 0 0 10px 2px;
+  background: linear-gradient(
+    90deg,
+    rgb(214, 39, 106) 0%,
+    rgb(76, 0, 254) 100%,
+    rgb(234, 0, 255) 100%
+  );
+  color: #fff;
+  text-align: center;
 }
 
-.btn-grid {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 10px;
-  margin: 20px 0;
+.timer-text {
+  padding: 55px;
 }
 
-.btn {
-  --hue: var(--hue-neutral);
-  border: 1px solid hsl(var(--hue), 100%, 30%);
-  background-color: hsl(var(--hue), 100%, 50%);
-  border-radius: 5px;
-  padding: 5px 10px;
-  color: white;
-  outline: none;
+@media screen and (max-width: 1183px) {
+  main {
+    flex-direction: column;
+  }
+
+  .word-guess,
+  .results {
+    width: 90vw;
+  }
+
+  section {
+    background-color: white;
+    margin: 20px auto;
+    width: 92vw;
+  }
 }
 
-.btn:hover {
-  border-color: black;
-}
+@media screen and (max-width: 504px) {
+  .large-font {
+    font-size: 2em;
+  }
 
-.btn.correct {
-  --hue: var(--hue-correct);
-  color: black;
-}
+  .reset-button {
+    font-size: 12px;
+    width: 20ox;
+  }
 
-.btn.wrong {
-  --hue: var(--hue-wrong);
-}
-
-.start-btn,
-.next-btn {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 10px 20px;
-}
-
-.controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hide {
-  display: none;
-}
-
-@import url("https://fonts.googleapis.com/css?family=Raleway");
-
-html {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #dfdfdf;
+  .timer {
+    height: 200px;
+  }
 }

@@ -1,126 +1,145 @@
-const startButton = document.getElementById("start-btn");
-const nextButton = document.getElementById("next-btn");
-const questionContainerElement = document.getElementById("question-container");
-const questionElement = document.getElementById("question");
-const answerButtonsElement = document.getElementById("answer-buttons");
+var i = "Connection";
+console.log(i);
 
-let shuffledQuestions, currentQuestionIndex;
+var timerLi = document.querySelector("#timerLi");
+var startBtn = document.querySelector(".start-button");
+var questionDiv = document.querySelector("#question");
+var answerDivA = document.querySelector("#A");
+var answerDivB = document.querySelector("#B");
+var answerDivC = document.querySelector("#C");
+var answerDivD = document.querySelector("#D");
+var questionContainer = document.querySelector(".queSection");
+var questionResult = document.querySelector("#questionResult");
+var score = 0;
+var endQuizEl = document.querySelector("#endQuiz");
+var initialSubmitEl = document.querySelector("#initialSubmit");
+let scoreListEl = document.querySelector("#scoreList");
+let finalScoreEl = document.querySelector("#finalScore");
+let retakeBtnEl = document.querySelector("#retakeBtn");
 
-startButton.addEventListener("click", startGame);
-nextButton.addEventListener("click", () => {
-  currentQuestionIndex++;
-  setNextQuestion();
-});
+var timer;
+var count;
+var timerCount = 90;
 
-function startGame() {
-  startButton.classList.add("hide");
-  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-  currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hide");
-  setNextQuestion();
-}
-
-function setNextQuestion() {
-  resetState();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
-}
-
-function showQuestion(question) {
-  questionElement.innerText = question.question;
-  question.answers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerText = answer.text;
-    button.classList.add("btn");
-    if (answer.correct) {
-      button.dataset.correct = answer.correct;
-    }
-    button.addEventListener("click", selectAnswer);
-    answerButtonsElement.appendChild(button);
-  });
-}
-
-function resetState() {
-  clearStatusClass(document.body);
-  nextButton.classList.add("hide");
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-  }
-}
-
-function selectAnswer(e) {
-  const selectedButton = e.target;
-  const correct = selectedButton.dataset.correct;
-  setStatusClass(document.body, correct);
-  Array.from(answerButtonsElement.children).forEach((button) => {
-    setStatusClass(button, button.dataset.correct);
-  });
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove("hide");
-  } else {
-    startButton.innerText = "Show Results";
-  }
-}
-
-function setStatusClass(element, correct) {
-  clearStatusClass(element);
-  if (correct) {
-    element.classList.add("correct");
-  } else {
-    element.classList.add("wrong");
-  }
-}
-
-function clearStatusClass(element) {
-  element.classList.remove("correct");
-  element.classList.remove("wrong");
-}
-
-const questions = [
+var questionBank = [
   {
     question: "Commonly used data types DO NOT include:",
-    answers: [
-      { text: "strings", correct: false },
-      { text: "booleans", correct: false },
-      { text: "alerts", correct: true },
-      { text: "numbers", correct: false },
-    ],
+    answerA: "strings",
+    answerB: "booleans",
+    answerC: "alerts",
+    answerD: "numbers",
+    correct: "C",
   },
   {
-    question: "The condition in an if / else statement is enclosed within ____",
-    answers: [
-      { text: "quotes", correct: false },
-      { text: "curly brackets", correct: true },
-      { text: "parentheses", correct: false },
-      { text: "square brackets", correct: false },
-    ],
+    question:
+      "The condition in an if / else statement is enclosed within ______",
+    answerA: "quotes",
+    answerB: "curly brackets",
+    answerC: "parentheses",
+    answerD: "square brackets",
+    correct: "B",
   },
   {
-    question: "Arrays in JavaScript can be used to store ____.",
-    answers: [
-      { text: "numbers and strings", correct: false },
-      { text: "other arrays", correct: false },
-      { text: "booleans", correct: false },
-      { text: "all answers are correct", correct: true },
-    ],
+    question: "Arrays in JavaScript can be used to store ______________.",
+    answerA: "numbers and arrays",
+    answerB: "other arrays",
+    answerC: "booleans",
+    answerD: "all answers are correct",
+    correct: "D",
   },
   {
     question:
       "String values must be enclosed within ____ when being assigned to a value.",
-    answers: [
-      { text: "commas", correct: false },
-      { text: "curly brackets", correct: false },
-      { text: "quotes", correct: true },
-      { text: "parentheses", correct: false },
-    ],
+    answerA: "commas",
+    answerB: "curly brackets",
+    answerC: "quotes",
+    answerD: "parentheses",
+    correct: "C",
   },
   {
     question:
       "A very useful tool used during development and debugging for printing content to the debugger is:",
-    answers: [
-      { text: "JavaScript", correct: false },
-      { text: "terminal / bash", correct: false },
-      { text: "for loops", correct: false },
-      { text: "console.log", correct: true },
-    ],
+    answerA: "Javascript",
+    answerB: "terminal / bash",
+    answerC: "for loops",
+    answerD: "console.log",
+    correct: "D",
   },
 ];
+var questionBankIndex = questionBank.length - 1;
+
+var questionCounter = 0;
+console.log(questionBankIndex);
+startBtn.addEventListener("click", startGame);
+function startGame() {
+  questionCounter = 0;
+  console.log("Game Started");
+  startBtn.style.display = "none";
+  questionContainer.style.display = "block";
+  scoreListEl.style.display = "none";
+  endQuizEl.style.display = "none";
+
+  timerCount = 30;
+  questionCounter = 0;
+  startTimer();
+}
+
+function generateQuestions() {
+  var q = questionBank[questionCounter];
+  questionDiv.textContent = q.question;
+  answerDivA.textContent = q.answerA;
+  answerDivB.textContent = q.answerB;
+  answerDivC.textContent = q.answerC;
+  answerDivD.textContent = q.answerD;
+}
+generateQuestions();
+function answerIsCorrect() {
+  questionResult.textContent = "Correct";
+}
+function answerIsWrong() {
+  questionResult.textContent = "Wrong";
+}
+function checkAnswer(answer) {
+  if (questionBank[questionCounter].correct == answer) {
+    score++;
+    answerIsCorrect();
+  } else {
+    answerIsWrong();
+    timerCount = timerCount - 5;
+  }
+  if (questionCounter < questionBankIndex) {
+    questionCounter++;
+    generateQuestions();
+  } else {
+    endQuiz();
+  }
+}
+function startTimer() {
+  timer = setInterval(clockTick, 1000);
+}
+function clockTick() {
+  timerCount--;
+  timerLi.textContent = " Time Remaining: " + timerCount;
+  if (timerCount <= 0) {
+    endQuiz();
+  }
+}
+function endQuiz() {
+  clearInterval(timer);
+  endQuizEl.style.display = "block";
+  questionContainer.style.display = "none";
+  finalScoreEl.textContent = score;
+}
+function saveHighScores() {
+  let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  let initialsEl = document.querySelector("#initialTxt");
+  let newScore = {
+    score: score,
+    initials: initialsEl.value.trim(),
+  };
+  highScores.push(newScore);
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+  scoreListEl.style.display = "block";
+}
+initialSubmitEl.onclick = saveHighScores;
+retakeBtnEl.onclick = startGame;
